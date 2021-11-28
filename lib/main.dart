@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Achievements.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
       if (_counter == 3) age3();
-      if (_counter == 100) unlockAchievement(oldaf);
+      if (_counter == 100) unlockAchievement('oldaf', 'wow, ur old.');
     });
   }
   @override
