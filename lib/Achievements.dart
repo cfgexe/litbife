@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_typing_uninitialized_variables
+// ignore_for_file: file_names, prefer_typing_uninitialized_variables, unnecessary_new
 import 'Popup.dart';
 List achievementsunlockedlist = [];
 class Achievement {
@@ -12,5 +12,5 @@ unlockAchievement(String id, String description, String type) {
   oldaf.id = id;
   oldaf.description = description;
   oldaf.type = type;
-  main;
+  popup();
 }
