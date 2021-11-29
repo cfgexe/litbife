@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, unnecessary_new, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 void popup() => runApp(
       MyPopup(),
@@ -31,7 +32,7 @@ class MyHomePage extends StatelessWidget {
     actions: <Widget>[
       new FlatButton(
         onPressed: () {
-          Navigator.of(context).pop();
+          main();
         },
         textColor: Theme.of(context).primaryColor,
         child: Text('Ok'),
