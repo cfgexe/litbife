@@ -3,10 +3,12 @@ List achievementsunlockedlist = [];
 class Achievement {
   var id;
   var description;
+  var type;
 }
-unlockAchievement(String id, String description) {
+unlockAchievement(String id, String description, String type) {
   achievementsunlockedlist.add(id);
   Achievement oldaf = new Achievement();
   oldaf.id = id;
   oldaf.description = description;
+  oldaf.type = type;
 }
