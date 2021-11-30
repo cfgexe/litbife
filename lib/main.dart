@@ -33,7 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
       if (_counter == 3) age3();
-      if (_counter == 100) unlockAchievement('oldaf', 'wow, ur old.', 'age');
+      if (_counter == 100) {
+        return AlertDialog(
+          
     });
   }
   @override
