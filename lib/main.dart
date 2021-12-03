@@ -33,26 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
       if (_counter == 3) age3();
-      if (_counter == 100) {
-        return new AlertDialog(
-    title: const Text('Achievement Unlocked!'),
-    content: new Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text("wow, ur old."),
-      ],
-    ),
-    actions: <Widget>[
-      new FlatButton(
-        onPressed: () {
-          main();
-        },
-        textColor: Theme.of(context).primaryColor,
-        child: Text('Ok'),
-      ),
-    ],  
- );
+      if (_counter == 100)
+      {
+        final prefs 
   }
   @override
   Widget build(BuildContext context) {
