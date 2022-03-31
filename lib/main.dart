@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Achievements.dart';
-void main() {
+void main() async {
   runApp(const MyApp());
+  final prefs = await SharedPreferences.getInstance();
+  int memcount = prefs.getInt('memcount');
 }
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -23,19 +26,25 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  age3() {
-    if (_counter != 3) Exception("Age is NOT 3.");
-    // ignore: avoid_print
-    print("ur 3 now. grow up.");
+  var memcount = 0;
+  @override
+  void initState() {
+    super.initState();
+    getIntFromLocalMemory('COUNTER_NUMBER').then((value) =>
+    memcount = value
+    );
   }
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-      if (_counter == 3) age3();
-      if (_counter == 100)
+
+  void _incrementCounter() async {
+    setState(() async {
+      memcount++;
+      saveIntInLocalMemory('COUNTER_NUMBER', memcount);
+      if (memcount == 100)
       {
-        final prefs 
+        saveIntInLocalMemory('COUNTER_NUMBER', memcount);
+        unlockAchievement('oldaf', 'wow, ur old.', 'age');
+      }
+    });
   }
   @override
   Widget build(BuildContext context) {
@@ -51,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'ur age:',
             ),
             Text(
-              '$_counter',
+              '$memcount',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -69,5 +78,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+  Future<int> getIntFromLocalMemory(String key) async {
+    var pref = await SharedPreferences.getInstance();
+    var number = pref.getInt(key) ?? 0;
+    return number;
+  }
+
+  /*
+  * It returns the saved the int value from the memory.
+  * */
+  Future<void> saveIntInLocalMemory(String key, int value) async {
+    var pref = await SharedPreferences.getInstance();
+    pref.setInt(key, value);
   }
 }
